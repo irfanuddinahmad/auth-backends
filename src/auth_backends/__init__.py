@@ -3,4 +3,9 @@
  These package is designed to be used primarily with Open edX Django projects, but should be compatible with non-edX
  projects as well.
 """
-__version__ = '5.0.0'  # pragma: no cover
+from importlib.metadata import PackageNotFoundError, version
+
+try:
+    __version__ = version("edx-auth-backends")
+except PackageNotFoundError:  # pragma: no cover
+    pass

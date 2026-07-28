@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "edx-auth-backends"
+description = "Custom edX authentication backends and pipeline steps"
+readme = "README.rst"
+license = "AGPL-3.0"
+license-files = ["LICENSE.txt"]
+requires-python = ">=3.12"
+authors = [
+    {name = "edX", email = "oscm@edx.org"},
+]
+keywords = ["authentication", "edx"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Framework :: Django",
+    "Framework :: Django :: 5.2",
+    "Topic :: Internet",
+]
+dynamic = ["version"]
+dependencies = [
+    "django>=5.2,<6.0",
+    "edx-django-utils",
+    "edx-toggles",
+    "pyjwt[crypto]>=2.1.0",
+    "six",
+    "social-auth-app-django",
+    "social-auth-core",
+]
+
+[project.urls]
+Homepage = "https://github.com/openedx/auth-backends"
+
+[tool.setuptools_scm]
+version_scheme = "only-version"
+local_scheme = "no-local-version"
+fallback_version = "0.0.0"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["auth_backends"]
+
+[tool.setuptools.exclude-package-data]
+"*" = ["tests*", "*.tests*", "spec*", "*.spec*"]
+
+[tool.coverage.run]
+branch = true
+source = ["src/auth_backends"]
+omit = [
+    "*/tests/*",
+    "*/migrations/*",
+    "*/__pycache__/*",
+    "*/settings.py",
+]
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
+
+[tool.coverage.html]
+directory = "htmlcov"
