@@ -115,7 +115,7 @@ def get_version(*file_paths):
     raise RuntimeError("Unable to find version string.")
 
 
-VERSION = get_version("auth_backends", "__init__.py")
+VERSION = get_version("src", "auth_backends", "__init__.py")
 
 
 setup(
@@ -140,6 +140,7 @@ setup(
     author='edX',
     author_email='oscm@edx.org',
     license='AGPL',
-    packages=find_packages(),
+    packages=find_packages(where='src'),
+    package_dir={'': 'src'},
     install_requires=load_requirements('requirements/base.in'),
 )
