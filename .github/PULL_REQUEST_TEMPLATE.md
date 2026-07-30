@@ -19,8 +19,6 @@ Describe in a couple of sentences what this PR adds
 **Merge checklist:**
 - [ ] All reviewers approved
 - [ ] CI build is green
-- [ ] Version bump if needed
-- [ ] Changelog record added
 - [ ] Documentation updated (not only docstrings)
 - [ ] Commits are squashed
 
