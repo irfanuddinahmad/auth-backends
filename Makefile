@@ -6,7 +6,9 @@ clean:
 	find . -name '*.pyc' -delete
 
 quality:
-	uv run tox -e quality
+	uv sync --group quality
+	uv run pycodestyle --config=.pep8 src/auth_backends
+	uv run pylint --rcfile=pylintrc src/auth_backends
 
 requirements:  ## install development environment requirements
 	uv sync --group dev
