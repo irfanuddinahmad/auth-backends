@@ -10,7 +10,7 @@ license = "AGPL-3.0"
 license-files = ["LICENSE.txt"]
 requires-python = ">=3.12"
 authors = [
-    {name = "edX", email = "oscm@edx.org"},
+    {name = "Open edX Project", email = "oscm@openedx.org"},
 ]
 keywords = ["authentication", "edx"]
 classifiers = [
