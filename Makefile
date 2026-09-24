@@ -6,9 +6,7 @@ clean:
 	find . -name '*.pyc' -delete
 
 quality:
-	uv sync --group quality
-	uv run pycodestyle --config=.pep8 src/auth_backends
-	uv run pylint --rcfile=pylintrc src/auth_backends
+	uv run tox -e quality
 
 requirements:  ## install development environment requirements
 	uv sync --group dev
@@ -21,4 +19,4 @@ upgrade: ## update the uv.lock to use the latest releases satisfying our constra
 	uv lock --upgrade
 
 check_keywords: ## Scan the Django models in all installed apps in this project for restricted field names
-	python manage.py check_reserved_keywords --override_file db_keyword_overrides.yml
+	uv run python manage.py check_reserved_keywords --override_file db_keyword_overrides.yml
